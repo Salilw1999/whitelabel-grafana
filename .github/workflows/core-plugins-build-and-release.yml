@@ -101,7 +101,7 @@ jobs:
             echo "has_backend=false" >> "$GITHUB_OUTPUT"
           fi
       - name: Setup golang environment
-        uses: actions/setup-go@19bb51245e9c80abacb2e91cc42b33fa478b8639
+        uses: actions/setup-go@44694675825211faa026b3c33043df3e48a5fa00
         if: steps.check_backend.outputs.has_backend == 'true'
         with:
           go-version-file: go.mod
