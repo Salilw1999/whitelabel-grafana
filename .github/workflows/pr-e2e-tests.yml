@@ -54,7 +54,7 @@ jobs:
       # TODO: add a cleanup workflow to remove the cache when the PR is closed
       # https://github.com/actions/cache/blob/main/tips-and-workarounds.md#force-deletion-of-caches-overriding-default-cache-eviction-policy
       # TODO: maybe we could just use the cache to store the build, instead of uploading as an artifact?
-      - uses: actions/cache@v4
+      - uses: actions/cache@v5
         id: cache
         with:
           key: "build-grafana-${{ runner.os }}-${{ hashFiles('yarn.lock', 'public/*',  'packages/*', 'pkg/**/*.go', '**/go.mod', '**/go.sum', '!**_test.go', '!**.test.ts', '!**.test.tsx') }}"
