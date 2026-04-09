@@ -64,7 +64,7 @@ jobs:
       # If no cache hit, build Grafana
       - name: Build Grafana
         if: steps.cache.outputs.cache-hit != 'true'
-        uses: dagger/dagger-for-github@e47aba410ef9bb9ed81a4d2a97df31061e5e842e
+        uses: dagger/dagger-for-github@27b130bf0f79a7f6fbbbe0fbca6760dc9bb40a77
         with:
           verb: run
           args: go run ./pkg/build/cmd artifacts -a targz:grafana:linux/amd64 --grafana-dir="${PWD}" > out.txt
@@ -177,7 +177,7 @@ jobs:
       - name: chmod +x
         run: chmod +x ./e2e-runner
       - name: Run E2E tests
-        uses: dagger/dagger-for-github@e47aba410ef9bb9ed81a4d2a97df31061e5e842e
+        uses: dagger/dagger-for-github@27b130bf0f79a7f6fbbbe0fbca6760dc9bb40a77
         with:
           verb: run
           args: go run ./pkg/build/e2e --package=grafana.tar.gz
@@ -220,7 +220,7 @@ jobs:
         with:
           name: ${{ needs.build-grafana.outputs.artifact }}
       - name: Run E2E tests
-        uses: dagger/dagger-for-github@e47aba410ef9bb9ed81a4d2a97df31061e5e842e
+        uses: dagger/dagger-for-github@27b130bf0f79a7f6fbbbe0fbca6760dc9bb40a77
         with:
           verb: run
           args: go run ./pkg/build/e2e-playwright --package=grafana.tar.gz --shard=${{ matrix.shard }}/${{ matrix.shardTotal }} --blob-dir=./blob-report
@@ -328,13 +328,13 @@ jobs:
           name: ${{ needs.build-grafana.outputs.artifact }}
       - name: Run PR a11y test
         if: github.event_name == 'pull_request'
-        uses: dagger/dagger-for-github@e47aba410ef9bb9ed81a4d2a97df31061e5e842e
+        uses: dagger/dagger-for-github@27b130bf0f79a7f6fbbbe0fbca6760dc9bb40a77
         with:
           verb: run
           args: go run ./pkg/build/a11y --package=grafana.tar.gz
       - name: Run non-PR a11y test
         if: github.event_name != 'pull_request'
-        uses: dagger/dagger-for-github@e47aba410ef9bb9ed81a4d2a97df31061e5e842e
+        uses: dagger/dagger-for-github@27b130bf0f79a7f6fbbbe0fbca6760dc9bb40a77
         with:
           verb: run
           args: go run ./pkg/build/a11y --package=grafana.tar.gz --no-threshold-fail
