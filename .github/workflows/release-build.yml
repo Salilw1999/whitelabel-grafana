@@ -46,7 +46,7 @@ jobs:
     permissions:
       contents: read
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Set up version (Release Branches)
@@ -146,7 +146,7 @@ jobs:
             artifacts: targz:grafana:darwin/arm64
     steps:
       - uses: grafana/shared-workflows/actions/dockerhub-login@main
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           persist-credentials: false
       - name: Set up QEMU
