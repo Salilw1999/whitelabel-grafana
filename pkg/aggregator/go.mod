@@ -3,7 +3,7 @@ module github.com/grafana/grafana/pkg/aggregator
 go 1.24.4
 
 require (
-	github.com/emicklei/go-restful/v3 v3.11.0
+	github.com/emicklei/go-restful/v3 v3.13.0
 	github.com/grafana/grafana-plugin-sdk-go v0.278.0
 	github.com/grafana/grafana/pkg/apimachinery v0.0.0-20250514132646-acbc7b54ed9e
 	github.com/grafana/grafana/pkg/semconv v0.0.0-20250514132646-acbc7b54ed9e
